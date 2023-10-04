@@ -7,6 +7,7 @@ public class Menu {
     private Scanner input = new Scanner(System.in);
     private boolean isRunning = true;
     private boolean isLibrarian = true;
+    private boolean isUser = true;
     Librarian lib = new Librarian();
 
     //This method initiates the main menu.
@@ -30,25 +31,74 @@ public class Menu {
                         librarianMenu();
                         break;
                     case "2":
-                        //UserMenu
+                        userMenu();
                         break;
                     default:
-                        System.out.println("default");
+                        System.out.println("Invalid input. Try again");
                 }
             } catch (Exception e) {
                 System.out.println("fel");
             }
         }
     }
+    public void userMenu() {
+        System.out.println("Please enter your name: ");
+        User user = new User(input.nextLine());
+        lib.addUser(user);
 
+        while (isUser) {
+            System.out.println("Logged in as " + user.toString());
+            System.out.println("[1] List of all books");
+            System.out.println("[2] List of available books");
+            System.out.println("[3] Get a description of a book");
+            System.out.println("[4] Borrow book");
+            System.out.println("[5] Return book");
+            System.out.println("[6] My borrowed books");
+            System.out.println("[0] Log out");
+
+            String choice = input.nextLine();
+
+            switch (choice) {
+                case "1":
+                    lib.allTitles();
+                    break;
+                case "2":
+                    lib.availableBooks();
+                    break;
+                case "3":
+                    lib.allBooksIndexList();
+                    System.out.println("Please enter the number of the book you want more information about: ");
+                    lib.getDescription(input.nextInt());
+                    break;
+                case "4":
+                    lib.allBooksIndexList();
+                    System.out.println("Please enter the number of the book you would like to borrow: ");
+                    lib.borrowBook(input.nextInt());
+                    break;
+                case "5":
+
+                    break;
+                case "6":
+
+                    break;
+                case "0":
+
+                    break;
+
+
+
+
+            }
+        }
+    }
     //Librarian Menu.
     public void librarianMenu() {
         while (isLibrarian) {
-            System.out.println("Welcome Librarian!");
+            System.out.println("Logged in as Librarian");
             System.out.println("[1] - Add book to library.");
             System.out.println("[2] - Remove book from library.");
             System.out.println("[3] - See all books.");
-            // System.out.println("[4] - See all borrowed books.");
+            System.out.println("[4] - See all borrowed books.");
             // System.out.println("[5] - See list of users.");
             // System.out.println("[6] - Log out.");
 
@@ -67,8 +117,12 @@ public class Menu {
                 case "3":
                     lib.allBooks();
                     break;
+                case "4":
+                    lib.borrowedBooks();
+                    break;
                 default:
                     System.out.println("Default!");
+                    break;
             }
         }
     }
