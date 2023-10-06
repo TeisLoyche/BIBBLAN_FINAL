@@ -76,11 +76,18 @@ public class Librarian {
     //This method prints out all books in an index list starting from 1.
     public void allBooksIndexList() {
         for (int i = 0; i < allBooks.size(); i++){
-            System.out.println("[" + (i + 1) + "]" + ": " + allBooks.get(i));
+            System.out.println("[" + (i+1) + "]" + ": " + allBooks.get(i));
         }
     }
     //This method allows user to remove the corresponding index in the book index list.
+    //printar bekräftelse på vilken bok som tagits bort samt
+    // la till allBooksList igen för att verifiera att den är borttagen
     public void removeBook(int input){
-        allBooks.remove(input - 1);
+        System.out.println("removing book:\n--> " + allBooks.get(input -1));
+        allBooks.remove(input -1);
+        allBooksIndexList();
+    }
+    public void users() {
+
     }
 }

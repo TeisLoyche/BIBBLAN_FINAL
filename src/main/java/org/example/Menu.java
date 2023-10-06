@@ -62,7 +62,11 @@ public class Menu {
                 case "2":
                     lib.allBooksIndexList();
                     System.out.println("Please input the number of the book you want to remove:");
-                    lib.removeBook(input.nextInt());
+                    // scannern är satt på string och funkar ej på input int, därför den kastar default
+                    // skapa ny scanner som tar emot en int för att index skall funka
+                    Scanner i = new Scanner(System.in);
+                    lib.removeBook(i.nextInt());
+
                     break;
                 case "3":
                     lib.allBooks();
