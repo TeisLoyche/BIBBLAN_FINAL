@@ -13,7 +13,13 @@ public class User {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "User - " + userName;
-    }
+=======
+        return "User: " + userName;
 
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
+    }
 }
+
+
