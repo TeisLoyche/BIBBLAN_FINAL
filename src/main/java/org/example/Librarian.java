@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Librarian {
     //All our book-lists.
-    Calendar c = Calendar.getInstance();
-
     private List<Book> allBooks;
     private List<Book> borrowedBooks;
     private List<Book> availableBooks;
@@ -24,15 +22,18 @@ public class Librarian {
         System.out.println("removing book:\n--> " + allBooks.get(input -1));
         allBooks.remove(input -1);
     }
+    //This method adds user to the user list.
     public void addUserToArray(User user) {
         userList.add(user);
     }
+    //This method prints out all titles of all books.
     public void allTitles() {
         System.out.println("All books: ");
         for (Book book : allBooks) {
             System.out.println(book.getTitle() + " - " + book.getAuthor());
         }
     }
+    //This method prints out a user's borrowed books, and the return date of each book.
     public void borrowedBooks() {
         System.out.println("Borrowed books: ");
         Calendar calendar = Calendar.getInstance();
@@ -41,19 +42,12 @@ public class Librarian {
             System.out.println("[" + (i+1) + "]" + ": " + borrowedBooks.get(i).getTitle() + " Return: " + calendar.getTime());
         }
     }
-
+    //This method gives a description of a book.
     public void getDescriptionOfBook(int input) {
         System.out.println(allBooks.get(input-1).getTitle() + " - "+ allBooks.get(input-1).getAuthor() + " - " +
                 allBooks.get(input-1).getDescription());
     }
-
-    public void allBorrowedBooks() {
-        System.out.println("All borrowed books: ");
-        for (Book book : borrowedBooks) {
-            System.out.println(book.getTitle());
-        }
-    }
-
+    //This method adds 4 users to the list of users at the start of the program.
     public void addUsers() {
         addUserToArray(new User("Teis"));
         addUserToArray(new User("Oskar"));
@@ -61,20 +55,18 @@ public class Librarian {
         addUserToArray(new User("Jerker"));
     }
 
+    //This method adds user to list of users.
     public void addUser(User user) {
         userList.add(user);
     }
 
+    //This method adds book of choice to borrowed book-list, and removes the same book from available books.
     public void borrowBook(int input) {
         borrowedBooks.add(allBooks.get(input-1));
         System.out.println("Successfully borrowed: " + availableBooks.get(input-1).getTitle());
         availableBooks.remove(input - 1);
     }
-
-    public void addBookToLibrary(Book book) {
-        allBooks.add(book);
-        availableBooks.add(book);
-    }
+    //This method adds 10 books to the library.
     public void library() {
         addBookToLibrary(new Book("Lord of the rings", "J.R.R. Tolkien",
                 "A magical ring needs to be destroyed to save the world", "1"));
@@ -97,30 +89,31 @@ public class Librarian {
         addBookToLibrary(new Book("The great Gatsby", "F. Scott Fitzgerald",
                 "Party like theres no tomorrow with mr. Gatsby in the 1920s", "10"));
     }
-    //Method for adding a book to the list of all books.
+    //This method goes with the "Library"-method. It adds the 10 books to the library.
+    public void addBookToLibrary(Book book) {
+        allBooks.add(book);
+        availableBooks.add(book);
+    }
+    //This method adds a book to the library.
     public void addBookToArray(Book book) {
         allBooks.add(book);
         availableBooks.add(book);
         System.out.println(book.getTitle() + " successfully added to the library!");
     }
-    //Method for printing out ALL books with descriptions and everything
+    //This method prints out ALL books with descriptions and everything.
     public void allBooks() {
         System.out.println("All books: ");
         for (Book book : allBooks) {
             System.out.println(book);
         }
     }
-    // Method for getting the description of a chosen book
-    public void getDescription(int input) {
-        System.out.println(allBooks.get(input - 1).getTitle() + " - " + allBooks.get(input - 1).getAuthor()
-         + " - " + allBooks.get(input - 1).getDescription());
-    }
+    //This method prints out ALL books with their corresponding index number.
     public void allBooksIndexList() {
         for (int i = 0; i < allBooks.size(); i++){
             System.out.println("[" + (i+1) + "]" + ": " + allBooks.get(i).getTitle());
         }
     }
-    //Method for printing out all available books.
+    //This method prints out all AVAILABLE books with their corresponding index number.
     public void availableBooks() {
         System.out.println("Available books: ");
         for (int i = 0; i < availableBooks.size(); i++){
