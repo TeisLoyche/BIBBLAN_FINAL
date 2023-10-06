@@ -20,6 +20,7 @@ public class Librarian {
         availableBooks = new ArrayList<>();
         userList = new ArrayList<>();
     }
+<<<<<<< HEAD
     public void addUserToArray(User user) {
         userList.add(user);
     }
@@ -47,6 +48,13 @@ public class Librarian {
         addUserToArray(new User("Jerker"));
     }
 
+=======
+    // Adds user to the userList array
+    public void addUser(User user) {
+        userList.add(user);
+
+    }
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
     //Method for adding a book to the library.
     public void addBookToLibrary(Book book) {
         allBooks.add(book);
@@ -58,18 +66,39 @@ public class Librarian {
         availableBooks.add(book);
         System.out.println(book.getTitle() + " successfully added to the library!");
     }
-    //Method for printing out ALL books.
+    public void borrowBook(int input) {
+        allBooks.get(input);
+    }
+    //Method for printing out ALL books with descriptions and everything
     public void allBooks() {
         System.out.println("All books: ");
         for (Book book : allBooks) {
             System.out.println(book);
         }
     }
+    // Method for getting the description of a chosen book
+    public void getDescription(int input) {
+        System.out.println(allBooks.get(input - 1).getTitle() + " - " + allBooks.get(input - 1).getAuthor()
+         + " - " + allBooks.get(input - 1).getDescription());
+
+    }
+    // All the books in the library but with just Title + Author
+    public void allTitles() {
+        System.out.println("All books: ");
+        for (Book book : allBooks) {
+            System.out.println(book.getTitle() + " - " + book.getAuthor());
+        }
+    }
     //Method for printing out all available books.
     public void availableBooks() {
         System.out.println("Available books: ");
+<<<<<<< HEAD
         for (int i = 0; i < availableBooks.size(); i++){
             System.out.println("[" + (i+1) + "]" + ": " + availableBooks.get(i).getTitle());
+=======
+        for (Book book : availableBooks) {
+            System.out.println(book.getTitle());
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
         }
     }
     //Method for printing our all borrowed books.
@@ -108,6 +137,7 @@ public class Librarian {
     //This method prints out all books in an index list starting from 1.
     public void allBooksIndexList() {
         for (int i = 0; i < allBooks.size(); i++){
+<<<<<<< HEAD
             System.out.println("[" + (i+1) + "]" + ": " + allBooks.get(i).getTitle());
         }
     }
@@ -128,5 +158,15 @@ public class Librarian {
 
         public void users() {
 
+=======
+            System.out.println("[" + (i + 1) + "]" + ": " + allBooks.get(i).getTitle());
+        }
+    }
+    //This method allows librarian user to remove the corresponding index in the book index list.
+    public void removeBook(int input){
+        allBooks.remove(input - 1);
+        borrowedBooks.remove(input - 1);
+        availableBooks.remove(input - 1);
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
     }
 }

@@ -9,7 +9,10 @@ public class Menu {
     private boolean isRunning = true;
     private boolean isLibrarian = true;
     private boolean isUser = true;
+<<<<<<< HEAD
     public String choice;
+=======
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
     Librarian lib = new Librarian();
 
     //This method initiates the main menu.
@@ -37,7 +40,7 @@ public class Menu {
                         userMenu();
                         break;
                     default:
-                        System.out.println("default");
+                        System.out.println("Invalid input. Try again");
                 }
             } catch (Exception e) {
                 System.out.println("fel");
@@ -47,6 +50,7 @@ public class Menu {
     public void userMenu() {
         System.out.println("Please enter your name: ");
         User user = new User(input.nextLine());
+<<<<<<< HEAD
         lib.addUserToArray(user);
 
         while (isUser) {
@@ -60,10 +64,26 @@ public class Menu {
             System.out.println("[7] Log out");
             System.out.println("[0] Exit");
             choice = input.nextLine();
+=======
+        lib.addUser(user);
+
+        while (isUser) {
+            System.out.println("Logged in as " + user.toString());
+            System.out.println("[1] List of all books");
+            System.out.println("[2] List of available books");
+            System.out.println("[3] Get a description of a book");
+            System.out.println("[4] Borrow book");
+            System.out.println("[5] Return book");
+            System.out.println("[6] My borrowed books");
+            System.out.println("[0] Log out");
+
+            String choice = input.nextLine();
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
 
             switch (choice) {
                 case "1":
                     lib.allTitles();
+<<<<<<< HEAD
                     enterToContinue();
                     break;
                 case "2":
@@ -97,11 +117,36 @@ public class Menu {
                     break;
                 case "0":
                     System.exit(0);
+=======
+                    break;
+                case "2":
+                    lib.availableBooks();
+                    break;
+                case "3":
+                    lib.allBooksIndexList();
+                    System.out.println("Please enter the number of the book you want more information about: ");
+                    lib.getDescription(input.nextInt());
+                    break;
+                case "4":
+                    lib.allBooksIndexList();
+                    System.out.println("Please enter the number of the book you would like to borrow: ");
+                    lib.borrowBook(input.nextInt());
+                    break;
+                case "5":
+
+                    break;
+                case "6":
+
+                    break;
+                case "0":
+
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
                     break;
 
 
 
 
+<<<<<<< HEAD
 
 
              }
@@ -113,12 +158,15 @@ public class Menu {
             System.in.read();
         } catch (IOException ex) {
             ex.printStackTrace();
+=======
+            }
+>>>>>>> 59390ff1a560fbc83c70c0003baa3ab51165ceb2
         }
     }
     //Librarian Menu.
     public void librarianMenu() {
         while (isLibrarian) {
-            System.out.println("Welcome Librarian!");
+            System.out.println("Logged in as Librarian");
             System.out.println("[1] - Add book to library.");
             System.out.println("[2] - Remove book from library.");
             System.out.println("[3] - See all books.");
@@ -149,6 +197,7 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Default!");
+                    break;
             }
         }
     }
