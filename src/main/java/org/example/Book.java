@@ -49,7 +49,6 @@ public class Book {
         return "Title: " + title + " Author: " + author + " Description: " + description + " ID: " + id;
     }
 
-
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
